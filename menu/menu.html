@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaji's Kitchen - Menu</title>
+
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="../menu/menu-styles.css" />
+
+  <!-- Font Awesome (optional) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="../images/logo.jpg" alt="Aaji's Kitchen Logo" class="logo-img">
+      <div class="name">
+        <span>Aaji's Kitchen</span><br>
+        <div class="taste">Taste of home</div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="shift">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/menu">Menu</a></li>
+          <li><a href="/aboutUs">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <!-- Cart Icon links to your cart page -->
+    <div class="cart-icon" id="cartIcon">
+      <a href="../cart.html">
+        <img src="images/cart.png" alt="Cart">
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- SEARCH BAR & CATEGORY FILTERS -->
+  <section class="menu-filter-section">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for items...">
+    </div>
+
+    <!-- Category Buttons (Centered) -->
+    <div class="category-buttons">
+      <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn" data-category="bestsellers">Bestsellers</button>
+      <button class="category-btn" data-category="namkeen">Namkeen &amp; Confections</button>
+      <button class="category-btn" data-category="Thalis">Thalis</button>
+      <button class="category-btn" data-category="Beverages">Beverages</button>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS SECTION (Updated) -->
+  <section id="bestsellers" class="menu-section" data-category="bestsellers">
+    <h2>Our Bestsellers</h2>
+    <div class="menu-grid">
+
+      <div class="menu-item" data-name="Batata Vada (2pcs)" data-price="50">
+        <img src="../images/vada.jpg" alt="Batata Vada">
+        <h3>Batata Vada (2pcs)</h3>
+        <p class="price">Price: ₹50</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Kanda Bhaji" data-price="55">
+        <img src="../images/bhaji.jpg" alt="Kanda Bhaji">
+        <h3>Kanda Bhaji</h3>
+        <p class="price">Price: ₹55</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Medu Vada (2pcs)" data-price="65">
+        <img src="../images/medu_vada.jpg" alt="Medu Vada">
+        <h3>Medu Vada (2pcs)</h3>
+        <p class="price">Price: ₹65</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Dal Vada (2pcs)" data-price="60">
+        <img src="../images/dal_vada.jpg" alt="Dal Vada">
+        <h3>Dal Vada (2pcs)</h3>
+        <p class="price">Price: ₹60</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Sabudana Vada (2pcs)" data-price="60">
+        <img src="../images/sabudana_vade.jpg" alt="Sabudana Vada">
+        <h3>Sabudana Vada (2pcs)</h3>
+        <p class="price">Price: ₹60</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Shira" data-price="75">
+        <img src="../images/shira.jpg" alt="Shira">
+        <h3>Shira</h3>
+        <p class="price">Price: ₹75</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Upma" data-price="50">
+        <img src="../images/upma.jpg" alt="Upma">
+        <h3>Upma</h3>
+        <p class="price">Price: ₹50</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Idli Sambar (3pcs)" data-price="60">
+        <img src="../images/idli.jpg" alt="Idli Sambar">
+        <h3>Idli Sambar (3pcs)</h3>
+        <p class="price">Price: ₹60</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- NAMKEEN & CONFECTIONS SECTION (Updated Items) -->
+  <section id="namkeen" class="menu-section" data-category="namkeen">
+    <h2>Namkeen &amp; Confections</h2>
+    <div class="menu-grid">
+
+      <div class="menu-item" data-name="Shankar Pali" data-price="400">
+        <img src="../images/shankarpali.jpg" alt="Shankar Pali">
+        <h3>Shankar Pali (1kg)</h3>
+        <p class="price">Price: ₹400</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Chivda" data-price="480">
+        <img src="../images/chivda.jpg" alt="Chivda">
+        <h3>Chivda (1kg)</h3>
+        <p class="price">Price: ₹480</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Shev" data-price="400">
+        <img src="../images/shev.jpg" alt="Shev">
+        <h3>Shev (1kg)</h3>
+        <p class="price">Price: ₹400</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Chakli" data-price="620">
+        <img src="../images/chakli.jpg" alt="Chakli">
+        <h3>Chakli (1kg)</h3>
+        <p class="price">Price: ₹620</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Rava Ladu" data-price="760">
+        <img src="../images/rava_ladu.jpg" alt="Rava Ladu">
+        <h3>Rava Ladu (1kg)</h3>
+        <p class="price">Price: ₹760</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Besan Ladu" data-price="860">
+        <img src="../images/besan_ladu.jpg" alt="Besan Ladu">
+        <h3>Besan Ladu (1kg)</h3>
+        <p class="price">Price: ₹860</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Karanji" data-price="860">
+        <img src="../images/karanji.jpeg" alt="Karanji">
+        <h3>Karanji (1kg)</h3>
+        <p class="price">Price: ₹860</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Puran Poli" data-price="35">
+        <img src="../images/puranpoli.jpg" alt="Puran Poli">
+        <h3>Puran Poli (1pc)</h3>
+        <p class="price">Price: ₹35</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Jwari Bhakri" data-price="30">
+        <img src="../images/jwari_bhakri.jpg" alt="Jwari Bhakri">
+        <h3>Jwari Bhakri (1pc)</h3>
+        <p class="price">Price: ₹30</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Tandul Bhakri" data-price="25">
+        <img src="../images/bhakri.jpg" alt="Tandul Bhakri">
+        <h3>Tandul Bhakri (1pc)</h3>
+        <p class="price">Price: ₹25</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Matri" data-price="380">
+        <img src="../images/mathri.jpg" alt="Matri">
+        <h3>Matri (1kg)</h3>
+        <p class="price">Price: ₹380</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Methi Matri" data-price="440">
+        <img src="../images/mathri.jpg" alt="Methi Matri">
+        <h3>Methi Matri (1kg)</h3>
+        <p class="price">Price: ₹440</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Gava Matri" data-price="460">
+        <img src="../images/mathri.jpg" alt="Gava Matri">
+        <h3>Gava Matri (1kg)</h3>
+        <p class="price">Price: ₹460</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- THALIS / LUNCH SECTION (Replaces 3rd section) -->
+  <section id="thalis" class="menu-section" data-category="Thalis">
+    <h2>Thalis / Lunch</h2>
+    <div class="menu-grid">
+
+      <div class="menu-item" data-name="Veg Thali 1" data-price="">
+        <img src="../images/veg_thali.jpg" alt="Veg Thali with Puranpoli">
+        <h3>Veg Thali</h3>
+        <p>Puranpoli, Aamti, Vade, Papad, Milk</p>
+        <p class="price">Price: ₹XXX</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Veg Thali 2" data-price="">
+        <img src="../images/veg_tahli.jpg" alt="Veg Thali with Dal">
+        <h3>Veg Thali</h3>
+        <p>Dal, Papad, Chapati, Bhaji</p>
+        <p class="price">Price: ₹XXX</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Nonveg Thali 1" data-price="">
+        <img src="../images/nonvegthali.jpg" alt="Nonveg Thali with Chicken Curry">
+        <h3>Nonveg Thali</h3>
+        <p>Pomfret,fried prawns,bombay duck, Bhakri, aamti</p>
+        <p class="price">Price: ₹XXX</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Nonveg Thali 2" data-price="">
+        <img src="../images/nonvegthali_2.jpg" alt="Nonveg Thali with Chicken Curry">
+        <h3>Nonveg Thali</h3>
+        <p>Chicken Curry, Chicken Vade, Bhakri, Fried Chicken</p>
+        <p class="price">Price: ₹XXX</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- BEVERAGES SECTION (Replaces 4th section) -->
+  <section id="beverages" class="menu-section" data-category="Beverages">
+    <h2>Beverages</h2>
+    <div class="menu-grid">
+
+      <div class="menu-item" data-name="Water" data-price="20">
+        <img src="../images/water.jpg" alt="Water Bottle">
+        <h3>Water</h3>
+        <p class="price">Price: ₹20</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Pepsi" data-price="10">
+        <img src="../images/pepsi.jpg" alt="Pepsi">
+        <h3>Pepsi</h3>
+        <p class="price">Price: ₹10</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Chaas" data-price="15">
+        <img src="../images/chaas.jpg" alt="Chaas">
+        <h3>Chaas</h3>
+        <p class="price">Price: ₹15</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Chai" data-price="15">
+        <img src="../images/chai.jpg" alt="Chai">
+        <h3>Chai</h3>
+        <p class="price">Price: ₹15</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+      <div class="menu-item" data-name="Coffee" data-price="20">
+        <img src="../images/coffee.jpg" alt="Coffee">
+        <h3>Coffee</h3>
+        <p class="price">Price: ₹20</p>
+        <div class="quantity-controls">
+          <button class="minus-btn">-</button>
+          <span class="quantity">0</span>
+          <button class="plus-btn">+</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 Aaji's Kitchen. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="../menu/menu-script.js"></script>
+</body>
+
+</html>

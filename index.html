@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaji's Kitchen - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quartzo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="../images/logo.jpg" alt="Aaji's Kitchen Logo" class="logo-img">
+      <div class="name"><span>Aaji's Kitchen</span><br>Taste of home</div>
+    </div>
+
+    <nav>
+      <div class="shift">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/menu">Menu</a></li>
+          <li><a href="/aboutUs">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="cart-icon" id="cartIcon">
+      <img src="images/cart.png" alt="Cart">
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <video autoplay loop muted playsinline class="hero-video" id="bg-video">
+      <source src="pinty-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-text">
+      <h1>Welcome to Our Catering Service...</h1>
+      <p>Where we bring homemade, delicious, and nutritious meals straight to your door!</p>
+    </div>
+  </section>
+
+  <!-- ABOUT US SECTION -->
+  <section id="about-us">
+    <div class="container">
+      <div class="about-wrapper">
+        <div class="about-content">
+          <p>We are dedicated to providing fresh, homemade meals that satisfy your cravings and bring comfort to your
+            table.</p>
+          <br>
+          <p>We take pride in using the freshest, locally sourced ingredients, ensuring every bite is packed with
+            nutritional value and authentic flavor. Our commitment to homemade goodness means each dish is prepared from
+            scratch with careful attention to hygiene and taste. Whether you’re hosting a cozy family gathering or a
+            grand celebration, our dedicated team is ready to personalize your menu and provide top-notch service that
+            reflects the warmth of a true home kitchen.</p>
+        </div>
+
+        <div class="video-box">
+          <video width="100%" height="auto" autoplay loop muted playsinline>
+            <source src="about-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="info-box hidden" id="why-choose-us">
+        <h3>WHY YOU SHOULD CHOOSE US</h3>
+        <div class="choose-us-container">
+          <div class="gif-container">
+            <img src="foodie.gif" alt="Food GIF" style="width: 100%; height: 100%;" />
+          </div>
+          <div class="choose-us-text">
+            <p>
+              We bring you fresh, homemade meals prepared with top-quality, pure ingredients and a whole lot of love.
+              Our food is homely, comforting, and packed with flavor—perfect for those seeking the taste of tradition
+              without compromising on quality. Enjoy our prompt service and reliable doorstep delivery, ensuring your
+              meal arrives warm and on time.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box hidden" id="delivery-box">
+        <h3>Delivery Areas</h3>
+        <p>We currently deliver to various neighborhoods across the city, ensuring that your meal arrives fresh and on
+          time.</p>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS SECTION -->
+  <section class="reviews hidden-right">
+    <h2>Customer Reviews</h2>
+    <div class="review">
+      <p>"Absolutely delicious and healthy! Highly recommend." – Rashmi ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="review">
+      <p>"The food quality is unmatched. Truly homemade!" – Vipul ⭐⭐⭐⭐⭐</p>
+    </div>
+  </section>
+
+  <a href="menu.html">
+    <button class="order-now-btn">Order Now</button>
+  </a>
+
+
+  <!-- CONTACT US SECTION -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Phone: +91 8691919333</p>
+    <p>Email: aajiskitchen@gmail.com</p>
+    <p>Address: Rane Society, Hiranandani, Powai, Mumbai, India</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 Aaji's Kitchen. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function handleScroll() {
+        const leftElements = document.querySelectorAll(".info-box.hidden");
+        leftElements.forEach((box) => {
+          if (box.getBoundingClientRect().top < window.innerHeight - 100) {
+            box.classList.add("show");
+            box.classList.remove("hidden");
+          }
+        });
+
+        const rightElements = document.querySelectorAll(".reviews.hidden-right");
+        rightElements.forEach((review) => {
+          if (review.getBoundingClientRect().top < window.innerHeight - 100) {
+            review.classList.add("show-right");
+            review.classList.remove("hidden-right");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+    });
+
+    document.getElementById("cartIcon").addEventListener("click", function () {
+      window.location.href = "../cart.html";
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartIcon = document.querySelector(".cart-icon");
+      const cartPopup = document.getElementById("cart-popup");
+
+      cartIcon.addEventListener("click", () => {
+        cartPopup.style.display = cartPopup.style.display === "none" ? "block" : "none";
+      });
+    });
+  </script>
+
+</body>
+
+</html>

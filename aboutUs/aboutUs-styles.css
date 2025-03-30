@@ -1,0 +1,388 @@
+/* 1) CUSTOM FONT-FACE DEFINITIONS */
+@font-face {
+    font-family: 'Cameliya';
+    src: url('../fonts/Cameliya.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Milker';
+    src: url('../fonts/Milker.otf') format('opentype');
+}
+
+.style-script-regular {
+    font-family: "Style Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 2) BASIC GLOBAL STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Milker', sans-serif;
+    background-color: #fff7f1;
+    /* Light background */
+    color: #333;
+    margin: 0;
+}
+
+/* 3) NAVBAR (full width, single definition) */
+.navbar {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffdde1;
+    /* Soft pastel pink */
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* Logo Section */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 400px;
+    background-color: #fff;
+}
+
+/* Brand Name Text (Aaji's Kitchen) */
+.navbar .logo span {
+    font-size: 2.5rem;
+    /* Larger size */
+    font-weight: 700;
+    color: #ff8fab;
+    font-family: 'Style Script', cursive !important;
+    /* As you used !important */
+    position: relative;
+    top: -3px;
+    /* Slight nudge up */
+}
+
+
+
+/* Navigation Links */
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav ul li a {
+    color: #4d4d4d;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-family: 'Cameliya';
+}
+
+.navbar nav ul li a:hover {
+    color: #f4c430;
+    /* Pastel yellow hover effect */
+}
+
+/* Cart Icon */
+.cart-icon {
+    width: 32.5px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .cart-icon:hover {
+    transform: scale(1.1);
+  }
+
+/* 4) CONTAINER (80% width) */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 2rem;
+    /* small top padding so content isn't hidden behind navbar */
+}
+
+/* 5) SECTIONS */
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    padding: 30px;
+    background: none;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Reveal Animation */
+.section.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Optional: Left/Right variant if desired */
+.section.left {
+    transform: translateX(-100px);
+}
+
+.section.right {
+    transform: translateX(100px);
+}
+
+.section.visible.left,
+.section.visible.right {
+    transform: translateX(0);
+}
+
+/* Decorative Line with Stars */
+.decorative-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.line {
+    height: 1px;
+    background-color: #000;
+    flex-grow: 1;
+}
+
+.star {
+    margin: 0 10px;
+    font-size: 20px;
+    color: #000;
+}
+
+.double-star {
+    margin: 0 5px;
+    font-size: 16px;
+    color: #000;
+}
+
+/* Updated .image-box to make image resize nicely */
+.image-box {
+    flex: 1;
+    margin: 20px;
+    display: flex;
+    /* For optional centering */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+}
+
+.image-box img {
+    max-width: 100%;
+    /* Let the image scale to the container’s width */
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.text-box {
+    flex: 1;
+    margin: 20px;
+}
+
+/* 6) HEADINGS (Cameliya) */
+h2 {
+    color: #de847e;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+
+}
+
+/* PARAGRAPHS (Milker) */
+p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-family: 'Milker', sans-serif;
+}
+
+/* 7) FOOTER */
+.footer {
+    background-color: #FFD3D3;
+    color: #D9534F;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+}
+
+/* 8) CENTER TEXT BOXES */
+.text-box1,
+.text-box4 {
+    text-align: center;
+}
+
+
+
+/* -----------------------------------
+   NAVBAR
+----------------------------------- */
+.navbar {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    background-color: #ffdde1;
+    /* Soft pastel pink */
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    /* The key is to NOT use justify-content: space-between 
+       if we want the nav specifically on the right. Instead,
+       let the logo be at the start, the nav "push" itself right. */
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* If you have a .name or .taste element for the tagline */
+.name {
+    display: flex;
+    flex-direction: column;
+}
+
+.taste {
+    position: relative;
+    top: -9px;
+
+    color: #464f58;
+    font-family: 'Cameliya';
+}
+
+.logo-img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 400px;
+    background-color: #fff;
+}
+
+/* Brand Name Text (Aaji's Kitchen) */
+.navbar .logo span {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff8fab;
+    font-family: 'Style Script', cursive !important;
+    position: relative;
+    top: 5px;
+    /* small nudge up */
+}
+
+/* NAV Links: 
+     margin-left: auto pushes the nav to the right. */
+.navbar nav {
+    margin-left: auto;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    font-family: 'Cameliya';
+    color: #4d4d4d;
+    font-size: 1rem;
+    position: relative;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #f4c430;
+}
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: #f4c430;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Cart Icon on the far right */
+.cart-icon {
+    position: relative;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1.5rem;
+    /* small gap from the nav */
+}
+
+.cart-icon img {
+    width: 40px;
+    height: auto;
+}
+
+.cart-icon i {
+    color: #4d4d4d;
+}
+
+.cart-icon span {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #ff8fab;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    padding: 3px 6px;
+}
+
+
+
+
+.shift {
+    position: absolute;
+    right: 100px;
+    /* Shift it from the right edge */
+    top: 50%;
+    /* Move it halfway down */
+    transform: translateY(-50%);
+    /* Center vertically within the navbar */
+}

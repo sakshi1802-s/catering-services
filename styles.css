@@ -1,0 +1,525 @@
+/* --------------------------------
+   FONTS
+-------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Quartzo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
+/* Font Faces */
+@font-face {
+  font-family: 'Cameliya';
+  src: url('../fonts/Cameliya.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Milker';
+  src: url('../fonts/Milker.otf') format('opentype');
+}
+
+/* --------------------------------
+   RESET / BASE
+-------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Milker', sans-serif;
+  background: linear-gradient(150deg, #fbe7c6 20%, #fff7f1 80%), url('https://www.transparenttextures.com/patterns/french-stucco.png');
+  min-height: 100vh;
+  color: #4d4d4d;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+
+/* --------------------------------
+   NAVBAR
+-------------------------------- */
+.name {
+  font-family: 'Cameliya';
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffdde1;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 400px;
+  background-color: #fff;
+}
+
+.navbar .logo span {
+  font-family: 'Style Script', cursive;
+  font-size: 2.2rem;
+  color: #ff8fab;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+nav ul li a {
+  font-family: 'Cameliya';
+  color: #4d4d4d;
+  font-size: 1rem;
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: #f4c430;
+}
+
+nav ul li a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #f4c430;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Cart Icon */
+.cart-icon {
+  width: 32.5px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+}
+
+/* --------------------------------
+   HERO SECTION
+-------------------------------- */
+
+.hero {
+  position: relative;
+  height: 90vh;
+  /* Taller hero for impact */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background video with subtle zoom animation */
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: zoomSlow 20s ease-in-out infinite;
+  filter: brightness(0.6);
+  /* Darken for text readability */
+}
+
+/* Add a gradient overlay for better text contrast */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(255, 143, 171, 0.3),
+      rgba(244, 196, 48, 0.3));
+  z-index: 0;
+}
+
+/* Text Container */
+.hero-text {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 1rem;
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+/* Heading */
+.hero-text h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff8f0;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  animation: slideIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+/* Subheading / Paragraph */
+.hero-text p {
+  font-family: 'Milker', sans-serif;
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-out 1.2s forwards;
+  opacity: 0;
+}
+
+/* Call-to-action button */
+.hero-text .btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: #ff8fab;
+  color: #fff;
+  font-family: 'Milker', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeIn 1s ease-out 1.5s forwards;
+  opacity: 0;
+}
+
+.hero-text .btn:hover {
+  background-color: #f4c430;
+  transform: translateY(-3px);
+}
+
+/* ------------------------------
+   KEYFRAMES
+------------------------------ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomSlow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+/* --------------------------------
+   ABOUT US SECTION
+-------------------------------- */
+#about-us {
+  padding: 4rem 2rem;
+}
+
+.about-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-content p {
+  font-family: 'Milker', sans-serif;
+  margin-bottom: 1rem;
+  color: #4d4d4d;
+}
+
+.video-box {
+  flex: 1;
+  max-width: 500px;
+  background-color: #fdf4c5;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+.video-box video {
+  border-radius: 8px;
+}
+
+/* Info Boxes */
+.info-box {
+  background-color: #fdf4c5;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.info-box.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#why-choose-us .choose-us-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+#why-choose-us .gif-container {
+  flex: 1;
+  max-width: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#why-choose-us .choose-us-text {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+/* --------------------------------
+   REVIEWS SECTION
+-------------------------------- */
+.reviews {
+  background-color: #fbe7c6;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.reviews h2 {
+  color: #ff8fab;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.review {
+  font-family: 'Milker', sans-serif;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.reviews.hidden-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reviews.show-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --------------------------------
+   CONTACT SECTION
+-------------------------------- */
+.contact {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.contact h2 {
+  color: #ff8fab;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-family: 'Milker', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+/* --------------------------------
+   FOOTER
+-------------------------------- */
+.footer {
+  background-color: #ffdde1;
+  color: #4d4d4d;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------
+   MISC
+-------------------------------- */
+h3 {
+  color: #ff8fab;
+}
+
+.shift {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Responsive Goodness */
+@media (max-width: 768px) {
+
+  .about-wrapper,
+  #why-choose-us .choose-us-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .shift {
+    position: fixed;
+    transform: none;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+}
+
+/* --------------------------------
+   ORDER NOW BUTTON (Fixed on Edge)
+-------------------------------- */
+.order-now-btn {
+  display: inline-block;
+  background-color: #ff8fab;
+  color: #fff;
+  font-family: 'Milker', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  /* Adjust to place it on the right edge */
+  z-index: 1000;
+  box-shadow: 0px 5px 15px rgba(255, 143, 171, 0.3);
+}
+
+/* Hover Effect */
+.order-now-btn:hover {
+  background-color: #f4c430;
+  transform: translateY(-3px);
+  box-shadow: 0px 10px 20px rgba(255, 143, 171, 0.3);
+}
+
+/* Ripple Effect on Click */
+.order-now-btn:active {
+  transform: scale(0.95);
+}
+
+/* Floating Animation */
+@keyframes floatEffect {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.order-now-btn {
+  animation: floatEffect 3s infinite ease-in-out;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Grandma's Catering</title>
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="../aboutUs/aboutUs-styles.css">
+    <!-- Font Awesome for Cart Icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="../images/logo.jpg" alt="Aaji's Kitchen Logo" class="logo-img">
+            <div class="name">
+                <span>Aaji's Kitchen</span><br>
+                <div class="taste">Taste of home</div>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav>
+            <div class="shift">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/aboutUs">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Cart Icon -->
+        <div class="cart-icon">
+            <img src="images/cart.png" id="cartIcon" alt="Cart">
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Our Story Section -->
+        <section class="section">
+            <div class="text-box1">
+                <h2>Our Story</h2>
+                <p>
+                    Grandma’s Catering began as a heartfelt dream, kindled by Grandma Meera’s boundless passion for
+                    cooking. From her earliest memories, she found immense joy in crafting comforting meals for her
+                    loved ones, perfecting recipes passed down through generations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Decorative Line with Stars -->
+        <div class="decorative-line">
+            <div class="line"></div>
+            <span class="star">★</span>
+            <div class="line"></div>
+        </div>
+
+        <!-- Meet the Cooks Section -->
+        <section class="section">
+            <div class="text-box">
+                <h2>Meet the Cooks</h2>
+                <p>
+                    Although “Meet the Cooks” suggests a bustling team, Grandma Meera is the sole culinary artist behind
+                    every dish at Grandma’s Catering.
+                </p>
+            </div>
+            <div class="image-box">
+                <img src="images/aaji.jpg" alt="Our Cooks">
+            </div>
+        </section>
+
+        <!-- Decorative Line with Stars -->
+        <div class="decorative-line">
+            <div class="line"></div>
+            <span class="star">★</span>
+            <div class="line"></div>
+        </div>
+
+        <!-- Food Quality Section -->
+        <section class="section">
+            <div class="image-box">
+                <img src="images/quality-food.jpg" alt="Quality Food">
+            </div>
+            <div class="text-box">
+                <h2>Food Quality</h2>
+                <p>
+                    At Grandma’s Catering, we uphold an unwavering standard of excellence, ensuring each dish embodies
+                    both exquisite taste and robust nutrition.
+                </p>
+            </div>
+        </section>
+
+        <!-- Decorative Line with Stars -->
+        <div class="decorative-line">
+            <div class="line"></div>
+            <span class="star">★</span>
+            <div class="line"></div>
+        </div>
+
+        <!-- History Section -->
+        <section class="section">
+            <div class="text-box4">
+                <h2>Our History</h2>
+                <p>
+                    Grandma’s Catering traces its roots back to the aromatic memories of Grandma Meera’s childhood,
+                    where she watched her mother create sumptuous homemade meals with effortless grace.
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>Contact Us: 123-456-7890 | Email: grandmacatering@example.com</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for reveal animation and cart redirection -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+
+            const revealSection = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(revealSection, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Cart redirection logic
+            const cartIcon = document.getElementById("cartIcon");
+            cartIcon.addEventListener("click", function () {
+                window.location.href = "../cart.html";
+            });
+        });
+    </script>
+
+</body>
+
+</html>
