@@ -27,15 +27,15 @@
         </ul>
       </div>
     </nav>
-    <div class="cart-icon">
-      <img src="images/cart.png" alt="Cart">
-    </div>
   </header>
 
   <section class="cart-section">
     <h2>Your Cart</h2>
+    <p id="empty-cart-msg"
+      style="color: black; font-weight: bold; text-align: center; margin: 30px auto; font-size: 1.2rem;">No items in
+      cart</p>
     <table class="cart-table" id="cart-table">
-      <thead>
+      <thead id="cart-table-head">
         <tr>
           <th>Item</th>
           <th>Price (₹)</th>
@@ -46,23 +46,19 @@
       </thead>
       <tbody id="cart-items"></tbody>
     </table>
+
     <div class="cart-total" id="cart-total">Total: ₹0</div>
 
-    <div class="user-details">
+    <div class="user-details" id="user-details">
       <h3>Delivery Details</h3>
-      <form id="checkout-form">
-        <label for="username">Name:</label>
-        <input type="text" id="username" required />
-
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" required pattern="[0-9]{10}" />
-
-        <label for="address">Address:</label>
-        <textarea id="address" rows="3" required></textarea>
-
-        <button type="submit" class="checkout-btn">Place Order</button>
-      </form>
+      <!-- User details will be shown here after login -->
+      <div id="user-details-content">
+        <!-- User information will be injected here -->
+      </div>
     </div>
+
+    <!-- Checkout button to place the order -->
+    <button id="checkout-btn" class="checkout-btn">Place Order</button>
   </section>
 
   <!-- Bill Modal -->
@@ -81,16 +77,70 @@
     let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     const cartTableBody = document.getElementById("cart-items");
     const cartTotalEl = document.getElementById("cart-total");
-
+    const userDetailsContent = document.getElementById("user-details-content");
+    let userToken = localStorage.getItem("userToken"); // Token from localStorage
+  
+    // Check if user is logged in
+    if (!userToken) {
+      alert("Oops! Gotta log in first 🚪✨");
+      window.location.href = 'login.html';
+    } else {
+      fetchUserDetails(); // Fetch user details if token exists
+    }
+  
+    // Fetch User Details Function
+    async function fetchUserDetails() {
+      try {
+        const response = await fetch("http://localhost:3000/user-details", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${userToken}`
+          }
+        });
+  
+        const result = await response.json();
+  
+        if (result.status === "success") {
+          const { username, phone, address } = result.user;
+          userDetailsContent.innerHTML = `
+            <p><strong>Name:</strong> ${username}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Address:</strong> ${address}</p>
+          `;
+        } else {
+          alert("Couldn't fetch user details 🫠");
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+        alert("Error fetching user details 😭");
+      }
+    }
+  
+    // Render Cart Items
     function renderCart() {
+      const cartTableHead = document.getElementById("cart-table-head");
+      const emptyMsg = document.getElementById("empty-cart-msg");
+  
       cartTableBody.innerHTML = "";
       let totalAmount = 0;
-
+  
+      if (cartItems.length === 0) {
+        cartTableHead.style.display = "none";
+        cartTableBody.style.display = "none";
+        emptyMsg.style.display = "block";
+        cartTotalEl.textContent = "Total: ₹0";
+        return;
+      }
+  
+      cartTableHead.style.display = "";
+      cartTableBody.style.display = "";
+      emptyMsg.style.display = "none";
+  
       cartItems.forEach((item, index) => {
         const { name, price, quantity } = item;
         const subtotal = price * quantity;
         totalAmount += subtotal;
-
+  
         const row = document.createElement("tr");
         row.innerHTML = `
           <td>${name}</td>
@@ -105,10 +155,11 @@
         `;
         cartTableBody.appendChild(row);
       });
-
+  
       cartTotalEl.textContent = `Total: ₹${totalAmount}`;
     }
-
+  
+    // Handle Cart Updates
     document.addEventListener("click", (e) => {
       if (e.target.classList.contains("plus-btn")) {
         cartItems[e.target.dataset.index].quantity++;
@@ -122,60 +173,60 @@
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       renderCart();
     });
-
-    document.getElementById("checkout-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const username = document.getElementById("username").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const address = document.getElementById("address").value.trim();
-
-      if (!username || !phone || !address || cartItems.length === 0) {
-        alert("Please fill all fields and add items to cart!");
+  
+    // Checkout: Place the Order
+    document.getElementById("checkout-btn").addEventListener("click", async () => {
+      if (cartItems.length === 0) {
+        alert("Cart is empty, fam. Go grab some goodies first 🍟🍔");
         return;
       }
-
-      // Store cart & time before clearing
+  
+      if (!userToken) {
+        alert("Log in to checkout, queen 👑");
+        return;
+      }
+  
       const currentCart = [...cartItems];
       const orderDateTime = new Date().toLocaleString();
-
-      const orderData = { username, phone, address, cartItems };
-
+      const orderDetails = { cartItems: currentCart };
+  
       try {
-        const response = await fetch("http://localhost:3000/submit-order", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(orderData)
+        const response = await fetch('http://localhost:3000/submit-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userToken}`
+          },
+          body: JSON.stringify(orderDetails)
         });
-
+  
         const result = await response.json();
-
-        if (result.status === "success") {
-          alert("Order placed successfully!");
-          document.getElementById("checkout-form").reset();
-
+  
+        if (result.status === 'success') {
+          alert('Order placed! 🎉');
           cartItems = [];
           localStorage.setItem("cartItems", JSON.stringify(cartItems));
           renderCart();
-
+  
           setTimeout(() => {
-            generateBill(currentCart, username, phone, address, orderDateTime);
+            generateBill(currentCart, orderDateTime);
             document.getElementById("bill-modal").style.display = "flex";
-          }, 2000);
+          }, 1500);
+  
         } else {
-          alert("Order failed: " + result.message);
+          alert('Failed to place order 😔: ' + result.message);
         }
-
-
       } catch (error) {
-        alert("Error connecting to server");
+        console.error('Order error:', error);
+        alert('Something went wrong 🫠 Try again later.');
       }
     });
-
-    // Generate Bill
-    function generateBill(cart, name, phone, address, dateTime) {
+  
+    // Generate Bill Function
+    function generateBill(cart, dateTime) {
       let billDetailsEl = document.getElementById("bill-details");
       let total = 0;
-
+  
       let itemsHTML = cart.map(item => {
         let sub = item.price * item.quantity;
         total += sub;
@@ -188,14 +239,10 @@
           </tr>
         `;
       }).join("");
-
+  
       let billHTML = `
         <h2>Order Invoice</h2>
         <p><strong>Date/Time:</strong> ${dateTime}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Address:</strong> ${address}</p>
-
         <table class="bill-table">
           <thead>
             <tr>
@@ -209,20 +256,24 @@
             ${itemsHTML}
           </tbody>
         </table>
-
         <p class="bill-total"><strong>Total:</strong> ₹${total}</p>
       `;
-
+  
       billDetailsEl.innerHTML = billHTML;
     }
-
+  
+    // Close the Bill Modal
     document.getElementById("close-bill").addEventListener("click", () => {
       document.getElementById("bill-modal").style.display = "none";
     });
-
-
-    renderCart();
+  
+    // Initial Render
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchUserDetails();
+      renderCart();
+    });
   </script>
+  
 </body>
 
 </html>

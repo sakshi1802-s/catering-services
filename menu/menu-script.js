@@ -9,6 +9,18 @@ const categoryBtns = document.querySelectorAll(".category-btn");
 const menuSections = document.querySelectorAll(".menu-section");
 const searchInput = document.getElementById("searchInput");
 const cartIcon = document.getElementById("cartIcon");
+const floatingCartIcon = document.getElementById("floating-cart-icon");
+const floatingCartCount = document.getElementById("floating-cart-count");
+
+// menu.js or inside a <script> in menu.html
+const token = localStorage.getItem("userToken");
+
+if (!token) {
+  alert("Session expired, please log in again 😔");
+  window.location.href = "/login.html"; // take them back to login
+}
+
+
 
 // Update localStorage whenever cartItems changes
 function updateLocalStorageCart() {
@@ -19,7 +31,21 @@ function updateLocalStorageCart() {
 function updateCartCount() {
   let total = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   cartCountEl.textContent = total;
+  floatingCartCount.textContent = total;
 }
+
+floatingCartIcon.addEventListener("click", () => {
+  document.getElementById("cart-window").style.display = "block";
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const floatingCartIcon = document.getElementById("floating-cart-icon");
+  if (floatingCartIcon) {
+    floatingCartIcon.addEventListener("click", function () {
+      window.location.href = "../cart.html"; // Or "./cart.html" if it's in the same folder
+    });
+  }
+});
 
 // On page load, set the displayed quantity from cart data
 function renderMenuQuantities() {
@@ -36,6 +62,14 @@ function addItemToCart(dishName, dishPrice) {
   const existingItem = cartItems.find(item => item.name === dishName);
   existingItem ? existingItem.quantity++ : cartItems.push({ name: dishName, price: parseInt(dishPrice), quantity: 1 });
   updateLocalStorageCart();
+  cartIcon.classList.add("wiggle");
+  floatingCartIcon.classList.add("wiggle");
+
+  setTimeout(() => {
+    cartIcon.classList.remove("wiggle");
+    floatingCartIcon.classList.remove("wiggle");
+  }, 500);
+
   updateCartCount();
 }
 

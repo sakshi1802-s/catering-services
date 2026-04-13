@@ -15,34 +15,43 @@
 
 <body>
 
-
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
       <img src="../images/logo.jpg" alt="Aaji's Kitchen Logo" class="logo-img">
       <div class="name"><span>Aaji's Kitchen</span><br>Taste of home</div>
     </div>
-
     <nav>
       <div class="shift">
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/menu">Menu</a></li>
           <li><a href="/aboutUs">About Us</a></li>
+          <li>
+            <button id="profile-btn" class="profile-button">
+              <i class="fas fa-user-circle"></i>
+            </button>
+          </li>
+          <button id="logout-btn" class="logout-button">Logout</button>
         </ul>
       </div>
     </nav>
-
-
-    <div class="cart-icon" id="cartIcon">
-      <img src="images/cart.png" alt="Cart">
-    </div>
   </header>
+  <!-- User Profile Modal -->
+  <div id="profile-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-profile-btn">&times;</span>
+      <h2>User Profile</h2>
+      <div id="profile-details">
+        <!-- User details will be displayed here -->
+      </div>
+    </div>
+  </div>
 
   <!-- HERO SECTION -->
   <section class="hero">
     <video autoplay loop muted playsinline class="hero-video" id="bg-video">
-      <source src="pinty-video.mp4" type="video/mp4">
+      <source src="images/food.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
@@ -53,70 +62,77 @@
   </section>
 
   <!-- ABOUT US SECTION -->
-  <section id="about-us">
+  <section id="about-us" class="about-section hidden-left">
     <div class="container">
       <div class="about-wrapper">
         <div class="about-content">
+          <h2 class="about-title">A Taste of Home</h2>
           <p>We are dedicated to providing fresh, homemade meals that satisfy your cravings and bring comfort to your
             table.</p>
-          <br>
           <p>We take pride in using the freshest, locally sourced ingredients, ensuring every bite is packed with
             nutritional value and authentic flavor. Our commitment to homemade goodness means each dish is prepared from
-            scratch with careful attention to hygiene and taste. Whether you’re hosting a cozy family gathering or a
-            grand celebration, our dedicated team is ready to personalize your menu and provide top-notch service that
-            reflects the warmth of a true home kitchen.</p>
+            scratch with love, hygiene, and soul. Whether it’s a cozy dinner or a grand feast, we’ve got your back!</p>
         </div>
 
         <div class="video-box">
-          <video width="100%" height="auto" autoplay loop muted playsinline>
-            <source src="about-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <img src="images/mix.jpg">
         </div>
       </div>
 
-      <div class="info-box hidden" id="why-choose-us">
-        <h3>WHY YOU SHOULD CHOOSE US</h3>
+      <div class="info-box hidden-left" id="why-choose-us">
+        <h3>Why You’ll Love Us</h3>
         <div class="choose-us-container">
           <div class="gif-container">
-            <img src="foodie.gif" alt="Food GIF" style="width: 100%; height: 100%;" />
+            <img src="images/foodie.gif" alt="Food GIF" />
           </div>
           <div class="choose-us-text">
             <p>
-              We bring you fresh, homemade meals prepared with top-quality, pure ingredients and a whole lot of love.
-              Our food is homely, comforting, and packed with flavor—perfect for those seeking the taste of tradition
-              without compromising on quality. Enjoy our prompt service and reliable doorstep delivery, ensuring your
-              meal arrives warm and on time.
+              Our meals are made with top-quality, pure ingredients and a whole lot of love. Think comforting flavors,
+              quick delivery, and a homemade touch that hits you right in the nostalgia.
             </p>
           </div>
         </div>
       </div>
 
-      <div class="info-box hidden" id="delivery-box">
-        <h3>Delivery Areas</h3>
-        <p>We currently deliver to various neighborhoods across the city, ensuring that your meal arrives fresh and on
-          time.</p>
+      <div class="info-box hidden-left" id="delivery-box">
+        <h3>Where We Deliver</h3>
+        <p>We deliver to multiple neighborhoods across the city, bringing freshness straight to your doorstep—hot, fast,
+          and full of flavor.</p>
       </div>
-
-
     </div>
   </section>
 
   <!-- CUSTOMER REVIEWS SECTION -->
   <section class="reviews hidden-right">
-    <h2>Customer Reviews</h2>
-    <div class="review">
-      <p>"Absolutely delicious and healthy! Highly recommend." – Rashmi ⭐⭐⭐⭐⭐</p>
-    </div>
-    <div class="review">
-      <p>"The food quality is unmatched. Truly homemade!" – Vipul ⭐⭐⭐⭐⭐</p>
+    <div class="review-card">
+      <h3>Our Customers Love Us!</h3>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="summary-text">Rated 5 stars by 120+ happy foodies. Homemade taste, straight from our kitchen to your
+        soul.</p>
+
+      <div class="reviews-slider">
+        <div class="review active">
+          <p>"Absolutely delicious and healthy! Highly recommend." – Rashmi ⭐⭐⭐⭐⭐</p>
+        </div>
+        <div class="review">
+          <p>"The food quality is unmatched. Truly homemade!" – Vipul ⭐⭐⭐⭐⭐</p>
+        </div>
+        <div class="review">
+          <p>"Timely delivery and every dish reminds me of mom's cooking!" – Aarav ⭐⭐⭐⭐⭐</p>
+        </div>
+        <div class="review">
+          <p>"Never going back to restaurant food again!" – Meera ⭐⭐⭐⭐⭐</p>
+        </div>
+        <div class="review">
+          <p>"Affordable and amazing. Perfect for busy weekdays!" – Karan ⭐⭐⭐⭐⭐</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <a href="menu.html">
     <button class="order-now-btn">Order Now</button>
   </a>
-
 
   <!-- CONTACT US SECTION -->
   <section class="contact" id="contact">
@@ -130,45 +146,168 @@
   <footer class="footer">
     <p>&copy; 2025 Aaji's Kitchen. All rights reserved.</p>
   </footer>
-
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      // Smooth Scroll Animations
       function handleScroll() {
-        const leftElements = document.querySelectorAll(".info-box.hidden");
-        leftElements.forEach((box) => {
-          if (box.getBoundingClientRect().top < window.innerHeight - 100) {
-            box.classList.add("show");
-            box.classList.remove("hidden");
+        const leftElements = document.querySelectorAll(".about-section.hidden-left, .info-box.hidden-left");
+        const rightElements = document.querySelectorAll(".reviews.hidden-right");
+
+        leftElements.forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("show-left");
+            el.classList.remove("hidden-left");
+            el.classList.add("show");
           }
         });
 
-        const rightElements = document.querySelectorAll(".reviews.hidden-right");
-        rightElements.forEach((review) => {
-          if (review.getBoundingClientRect().top < window.innerHeight - 100) {
-            review.classList.add("show-right");
-            review.classList.remove("hidden-right");
+        rightElements.forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("show-right");
+            el.classList.remove("hidden-right");
           }
         });
       }
-
       window.addEventListener("scroll", handleScroll);
-      handleScroll();
+      handleScroll(); // first scroll to warm up the vibes
+
+      // Review Carousel vibes
+      const reviews = document.querySelectorAll('.review');
+      if (reviews.length > 0) {
+        let currentReview = 0;
+        setInterval(() => {
+          reviews[currentReview].classList.remove('active');
+          currentReview = (currentReview + 1) % reviews.length;
+          reviews[currentReview].classList.add('active');
+        }, 3500);
+      }
+
+      // User login check: stay woke
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // Fetch user deets
+      fetch('http://localhost:3000/user-details', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            displayUserDetails(data.user);
+          } else {
+            console.error('Error fetching user details:', data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+      // Logout like a boss
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+          localStorage.removeItem('authToken');
+          localStorage.removeItem('user');
+          window.location.href = 'login.html';
+        });
+      }
     });
+    document.addEventListener("DOMContentLoaded", function () {
+      const profileBtn = document.getElementById('profile-btn');
+      const profileModal = document.getElementById('profile-modal');
+      const closeProfileBtn = document.getElementById('close-profile-btn');
 
-    document.getElementById("cartIcon").addEventListener("click", function () {
-      window.location.href = "../cart.html";
-    });
+      // When profile button is clicked
+      profileBtn.addEventListener('click', function () {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          alert("You need to log in first!");
+          window.location.href = 'login.html';
+          return;
+        }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const cartIcon = document.querySelector(".cart-icon");
-      const cartPopup = document.getElementById("cart-popup");
+        // Fetch user details from the server
+        fetch('http://localhost:3000/user-details', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              displayUserDetails(data.user);
+              profileModal.style.display = 'block'; // Show the modal
+            } else {
+              console.error('Error fetching user details:', data.message);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      });
 
-      cartIcon.addEventListener("click", () => {
-        cartPopup.style.display = cartPopup.style.display === "none" ? "block" : "none";
+      // Function to display user details in the modal
+      function displayUserDetails(user) {
+        const profileDetails = document.getElementById('profile-details');
+        profileDetails.innerHTML = `
+      <div class="detail-item">
+        <div class="detail-label">Username:</div>
+        <div>${user.username}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Email:</div>
+        <div>${user.email}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Phone:</div>
+        <div>${user.phone || 'Not provided'}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Address:</div>
+        <div>${user.address || 'Not provided'}</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Member Since:</div>
+        <div>${new Date(user.createdAt).toLocaleDateString()}</div>
+      </div>
+    `;
+      }
+
+      // Close the profile modal when the user clicks the "close" button
+      closeProfileBtn.addEventListener('click', function () {
+        profileModal.style.display = 'none';
+      });
+
+      // Close the profile modal when the user clicks outside of it
+      window.addEventListener('click', function (event) {
+        if (event.target === profileModal) {
+          profileModal.style.display = 'none';
+        }
       });
     });
-  </script>
+    // Trigger to open the modal
+    document.getElementById("openModalBtn").onclick = function () {
+      document.getElementById("myModal").classList.add("open");
+    }
 
+    // Trigger to close the modal
+    document.querySelector(".close").onclick = function () {
+      document.getElementById("myModal").classList.remove("open");
+    }
+
+    // If you want to close the modal when clicking outside the modal content
+    window.onclick = function (event) {
+      if (event.target === document.getElementById("myModal")) {
+        document.getElementById("myModal").classList.remove("open");
+      }
+    }
+
+  </script>
 </body>
 
 </html>

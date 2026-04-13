@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaji's Kitchen - Sign In</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .auth-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: #e67e22;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #d35400;
+        }
+
+        .switch-auth {
+            text-align: center;
+            margin-top: 1rem;
+            color: #555;
+        }
+
+        .switch-auth a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-container">
+        <h2>Welcome to Aaji's Kitchen</h2>
+        <div id="login-form">
+            <div class="form-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="Enter your password">
+            </div>
+            <div id="login-error" class="error"></div>
+            <button id="login-btn">Sign In</button>
+            <div class="switch-auth">
+                Don't have an account? <a href="#" id="show-register">Register</a>
+            </div>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <div class="form-group">
+                <label for="reg-username">Username</label>
+                <input type="text" id="reg-username" placeholder="Choose a username">
+            </div>
+            <div class="form-group">
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="Choose a password">
+            </div>
+            <div class="form-group">
+                <label for="reg-phone">Phone (optional)</label>
+                <input type="text" id="reg-phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="reg-address">Address (optional)</label>
+                <input type="text" id="reg-address" placeholder="Enter your address">
+            </div>
+            <div id="register-error" class="error"></div>
+            <button id="register-btn">Register</button>
+            <div class="switch-auth">
+                Already have an account? <a href="#" id="show-login">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Toggle between login and register forms
+            document.getElementById('show-register').addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            });
+
+            document.getElementById('show-login').addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('register-form').style.display = 'none';
+                document.getElementById('login-form').style.display = 'block';
+            });
+
+            document.getElementById('login-btn').addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+                const errorElement = document.getElementById('login-error');
+
+                // Clear previous errors
+                errorElement.textContent = '';
+
+                try {
+                    const response = await fetch('http://localhost:3000/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        // Save the token and user data in localStorage
+                        localStorage.setItem('authToken', data.token);
+                        localStorage.setItem('user', JSON.stringify(data.user));
+
+                        // Redirect to index.html
+                        window.location.href = 'index.html';
+                    } else {
+                        errorElement.textContent = data.message || 'Login failed';
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    errorElement.textContent = 'Failed to connect to server';
+                }
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                // Check if user is authenticated
+                const token = localStorage.getItem('authToken');
+                const user = JSON.parse(localStorage.getItem('user'));
+
+                if (!token || !user) {
+                    // Redirect to login if not authenticated
+                    window.location.href = 'login.html';
+                } else {
+                    // Display user info if logged in
+                    const userGreeting = document.getElementById('user-greeting');
+                    if (userGreeting) {
+                        userGreeting.textContent = `Welcome, ${user.username}!`;
+                    }
+                }
+                fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.token) {
+                            localStorage.setItem('userToken', data.token);
+                            // 🎯 After login, immediately go to menu page
+                            window.location.href = '/menu.html';
+                        } else {
+                            alert('Login failed.');
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Login error:', err);
+                        alert('Login failed.');
+                    });
+
+                // Logout functionality
+                const logoutBtn = document.getElementById('logout-btn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', function () {
+                        localStorage.removeItem('authToken');
+                        localStorage.removeItem('user');
+                        window.location.href = 'login.html';
+                    });
+                }
+            });
+
+            // Registration functionality
+            document.getElementById('register-btn').addEventListener('click', async function () {
+                const username = document.getElementById('reg-username').value;
+                const email = document.getElementById('reg-email').value;
+                const password = document.getElementById('reg-password').value;
+                const phone = document.getElementById('reg-phone').value;
+                const address = document.getElementById('reg-address').value;
+                const errorElement = document.getElementById('register-error');
+
+                if (!username || !email || !password) {
+                    errorElement.textContent = 'Username, email, and password are required';
+                    return;
+                }
+
+                try {
+                    const response = await fetch('http://localhost:3000/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, email, password, phone, address })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert('Registration successful! Please sign in.');
+                        document.getElementById('register-form').style.display = 'none';
+                        document.getElementById('login-form').style.display = 'block';
+                        errorElement.textContent = '';
+                    } else {
+                        errorElement.textContent = data.message || 'Registration failed';
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    errorElement.textContent = 'Failed to connect to server';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -13,6 +13,11 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
+<div class="floating-cart">
+  <img src="../images/cart.png" alt="Cart" id="floating-cart-icon">
+  <span class="floating-cart-count" id="floating-cart-count">0</span>
+</div>
+
 <body>
 
   <!-- NAVBAR -->
@@ -28,9 +33,9 @@
     <nav>
       <div class="shift">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/menu">Menu</a></li>
-          <li><a href="/aboutUs">About Us</a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../menu/menu.html">Menu</a></li>
+          <li><a href="./aboutus.html">About Us</a></li>
         </ul>
       </div>
     </nav>
@@ -317,11 +322,11 @@
     <h2>Thalis / Lunch</h2>
     <div class="menu-grid">
 
-      <div class="menu-item" data-name="Veg Thali 1" data-price="">
+      <div class="menu-item" data-name="Veg Thali 1" data-price="200">
         <img src="../images/veg_thali.jpg" alt="Veg Thali with Puranpoli">
         <h3>Veg Thali</h3>
         <p>Puranpoli, Aamti, Vade, Papad, Milk</p>
-        <p class="price">Price: ₹XXX</p>
+        <p class="price">Price: ₹200</p>
         <div class="quantity-controls">
           <button class="minus-btn">-</button>
           <span class="quantity">0</span>
@@ -329,11 +334,11 @@
         </div>
       </div>
 
-      <div class="menu-item" data-name="Veg Thali 2" data-price="">
+      <div class="menu-item" data-name="Veg Thali 2" data-price="200">
         <img src="../images/veg_tahli.jpg" alt="Veg Thali with Dal">
         <h3>Veg Thali</h3>
         <p>Dal, Papad, Chapati, Bhaji</p>
-        <p class="price">Price: ₹XXX</p>
+        <p class="price">Price: ₹200</p>
         <div class="quantity-controls">
           <button class="minus-btn">-</button>
           <span class="quantity">0</span>
@@ -341,11 +346,11 @@
         </div>
       </div>
 
-      <div class="menu-item" data-name="Nonveg Thali 1" data-price="">
+      <div class="menu-item" data-name="Nonveg Thali 1" data-price="300">
         <img src="../images/nonvegthali.jpg" alt="Nonveg Thali with Chicken Curry">
         <h3>Nonveg Thali</h3>
         <p>Pomfret,fried prawns,bombay duck, Bhakri, aamti</p>
-        <p class="price">Price: ₹XXX</p>
+        <p class="price">Price: ₹300</p>
         <div class="quantity-controls">
           <button class="minus-btn">-</button>
           <span class="quantity">0</span>
@@ -353,11 +358,11 @@
         </div>
       </div>
 
-      <div class="menu-item" data-name="Nonveg Thali 2" data-price="">
+      <div class="menu-item" data-name="Nonveg Thali 2" data-price="300">
         <img src="../images/nonvegthali_2.jpg" alt="Nonveg Thali with Chicken Curry">
         <h3>Nonveg Thali</h3>
         <p>Chicken Curry, Chicken Vade, Bhakri, Fried Chicken</p>
-        <p class="price">Price: ₹XXX</p>
+        <p class="price">Price: ₹300</p>
         <div class="quantity-controls">
           <button class="minus-btn">-</button>
           <span class="quantity">0</span>
@@ -435,8 +440,9 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2025 Aaji's Kitchen. All rights reserved.</p>
+    <p>© 2025 Aaji's Kitchen | Made with ❤️ and a lot of ghee</p>
   </footer>
+  
 
   <!-- SCRIPT -->
   <script src="../menu/menu-script.js"></script>

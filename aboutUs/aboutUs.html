@@ -13,6 +13,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* Floating Cart Styles */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .floating-cart:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-cart img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .floating-cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,10 +75,6 @@
             </div>
         </nav>
 
-        <!-- Cart Icon -->
-        <div class="cart-icon">
-            <img src="images/cart.png" id="cartIcon" alt="Cart">
-        </div>
     </header>
 
     <div class="container">
@@ -89,7 +122,7 @@
         <!-- Food Quality Section -->
         <section class="section">
             <div class="image-box">
-                <img src="images/quality-food.jpg" alt="Quality Food">
+                <img src="images/qualityfood.jpg" alt="Quality Food">
             </div>
             <div class="text-box">
                 <h2>Food Quality</h2>
@@ -124,6 +157,12 @@
         </footer>
     </div>
 
+    <!-- Floating Cart -->
+    <div class="floating-cart">
+        <img src="../images/cart.png" alt="Floating Cart" id="floating-cart-icon">
+        <span class="floating-cart-count" id="floating-cart-count">0</span>
+    </div>
+
     <!-- JavaScript for reveal animation and cart redirection -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -146,10 +185,31 @@
                 observer.observe(section);
             });
 
-            // Cart redirection logic
-            const cartIcon = document.getElementById("cartIcon");
-            cartIcon.addEventListener("click", function () {
-                window.location.href = "../cart.html";
+            // Floating cart redirects to cart (with error-proofing)
+            const floatingCartIcon = document.getElementById("floating-cart-icon");
+            if (floatingCartIcon) {
+                floatingCartIcon.addEventListener("click", function () {
+                    window.location.href = "../cart.html"; // Adjust path if needed
+                });
+            }
+
+            // Function to update floating cart count
+            function updateFloatingCartCount() {
+                const floatingCartCount = document.getElementById("floating-cart-count");
+                if (!floatingCartCount) return;
+                const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+                const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+                floatingCartCount.textContent = totalCount;
+            }
+
+            // Initial count render
+            updateFloatingCartCount();
+
+            // Listen for cart updates from other tabs/pages
+            window.addEventListener("storage", function (event) {
+                if (event.key === "cartItems") {
+                    updateFloatingCartCount();
+                }
             });
         });
     </script>

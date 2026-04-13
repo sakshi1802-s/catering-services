@@ -1,0 +1,31 @@
+let cart = [];
+let total = 0;
+
+function addToCart(item, price) {
+  cart.push({ item, price });
+  total += price;
+  updateCart();
+}
+
+function updateCart() {
+  const cartItems = document.getElementById('cart-items');
+  const totalElement = document.getElementById('total');
+  cartItems.innerHTML = '';
+  cart.forEach((cartItem) => {
+    const li = document.createElement('li');
+    li.textContent = `${cartItem.item} - $${cartItem.price.toFixed(2)}`;
+    cartItems.appendChild(li);
+  });
+  totalElement.textContent = total.toFixed(2);
+}
+
+function placeOrder() {
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+  } else {
+    alert(`Order placed! Total: $${total.toFixed(2)}`);
+    cart = [];
+    total = 0;
+    updateCart();
+  }
+}

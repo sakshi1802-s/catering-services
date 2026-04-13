@@ -1,0 +1,441 @@
+/*=========================
+  Fonts
+==========================*/
+@font-face {
+    font-family: 'Cameliya';
+    src: url('fonts/Cameliya.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Milker';
+    src: url('fonts/Milker.otf') format('opentype');
+}
+
+/*=========================
+    Base Styles
+==========================*/
+.style-script-regular {
+    font-family: "Style Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Milker', sans-serif;
+
+    background-color: #fff7f1;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+.section-title {
+    font-family: 'Milker', sans-serif;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #333;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode .section-title {
+    color: #f8f9fa;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffdde1;
+    /* Soft pastel pink */
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 400px;
+    background-color: #fff;
+}
+
+.navbar .logo span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ff8fab;
+    font-family: 'Style Script', cursive;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar nav ul li a {
+    color: #4d4d4d;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-family: 'Camelia', cursive;
+}
+
+.navbar nav ul li a:hover {
+    color: #f4c430;
+    /* Pastel yellow hover effect */
+}
+
+
+
+body.dark-mode .navbar {
+    background-color: #212529 !important;
+}
+
+
+.cart-icon {
+    margin-left: auto;
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-icon img {
+    width: 30px;
+    height: auto;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: #ff8fab;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    padding: 3px 6px;
+}
+
+
+
+
+body.dark-mode .cart-indicator {
+    color: #f8f9fa;
+}
+
+/*=========================
+    Item Box Styles
+==========================*/
+.item-box {
+    width: 250px;
+    height: 250px;
+    background: #fff;
+    display: inline-block;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.6s ease-out forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease, color 0.5s ease;
+}
+
+.item-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .item-box {
+    background-color: #495057;
+    color: #f8f9fa;
+}
+
+.item-box:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.item-box:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.item-box:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.item-box:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/*=========================
+    Item Image
+==========================*/
+.item-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+/*=========================
+    Item Details
+==========================*/
+.item-title {
+    font-family: 'Milker', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+.item-price {
+    font-family: 'Cameliya', sans-serif;
+    font-size: 1rem;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+/*=========================
+    Item Controls
+==========================*/
+.item-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-controls button {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    font-size: 1.2rem;
+    transition: background-color 0.2s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-controls button:hover {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.quantity {
+    margin: 0 15px;
+    font-size: 1.4rem;
+    min-width: 30px;
+    text-align: center;
+}
+
+/*=========================
+    Filter Buttons
+==========================*/
+.category-btn {
+    margin: 5px;
+    min-width: 120px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/*=========================
+    Dark Mode Buttons
+==========================*/
+#darkModeToggle {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/*=========================
+    Modal Styles
+==========================*/
+.modal-body img {
+    max-height: 250px;
+}
+
+#modalImage {
+    width: 100%;
+    height: auto;
+}
+
+/* Dark Mode Modal */
+body.dark-mode .modal-content {
+    background-color: #495057;
+    color: #f8f9fa;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: #6c757d;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+/* Modal Animations */
+.modal.fade .modal-dialog {
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+}
+
+/*=========================
+    Animations
+==========================*/
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*=========================
+    Responsive
+==========================*/
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .item-title {
+        font-size: 1rem;
+    }
+
+    .item-price {
+        font-size: 0.9rem;
+    }
+}
+
+/*=========================
+    New Category Container
+==========================*/
+.menu-section {
+    margin-top: 40px;
+}
+
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.item-image {
+    width: 100%;
+    /* Ensure image width matches the box */
+    height: 150px;
+    /* Set a fixed height for uniformity */
+    object-fit: cover;
+    /* Crop the image to fit without distortion */
+    border-radius: 8px;
+    display: block;
+}
+
+.item-box {
+    width: 250px;
+    height: auto;
+    /* Allow the box to expand based on content */
+    min-height: 300px;
+    /* Ensure enough space for image and text */
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    /* Prevent any internal overflow */
+}
+
+
+
+
+
+.navbar .logo span {
+    font-size: 2.5rem;
+    /* Increase from 1.8rem */
+    font-weight: 700;
+    color: #ff8fab;
+    font-family: 'Style Script', cursive;
+}
+
+.taste {
+    position: relative;
+    top: 2px;
+    color: #464f58;
+}
+
+
+
+.navbar a {
+    /* Targeting the menu links */
+    padding-top: 18px;
+    /* Slightly move them down */
+    display: inline-block;
+    /* Ensures padding takes effect */
+}
+
+
+
+
+
+
+
+.navbar {
+    display: flex;
+    /* Make the navbar a flex container */
+    align-items: center;
+    /* Vertically center items */
+}
+
+.navbar nav {
+    margin-left: auto;
+    /* This pushes the nav all the way to the right */
+}
+
+
+
+
+
+
+
+
+.shift {
+    position: absolute;
+    right: 100px;
+    /* Shift it from the right edge */
+    top: 50%;
+    /* Move it halfway down */
+    transform: translateY(-50%);
+    /* Center vertically within the navbar */
+}

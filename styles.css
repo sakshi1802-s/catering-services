@@ -26,7 +26,7 @@
 
 body {
   font-family: 'Milker', sans-serif;
-  background: linear-gradient(150deg, #fbe7c6 20%, #fff7f1 80%), url('https://www.transparenttextures.com/patterns/french-stucco.png');
+  background-color: #fff7f1;
   min-height: 100vh;
   color: #4d4d4d;
   line-height: 1.6;
@@ -57,7 +57,7 @@ img {
   justify-content: space-between;
   align-items: center;
   background-color: #ffdde1;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -136,6 +136,9 @@ nav ul li a:hover::after {
 .cart-icon:hover {
   transform: scale(1.1);
 }
+
+
+
 
 /* --------------------------------
    HERO SECTION
@@ -293,51 +296,84 @@ nav ul li a:hover::after {
    ABOUT US SECTION
 -------------------------------- */
 #about-us {
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
+  background-color: #fff8ec;
+  transition: background-color 0.5s ease;
+}
+
+.about-section.hidden-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.about-section.show-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about-title {
+  font-family: 'Milker', sans-serif;
+  font-size: 2.2rem;
+  color: #ff8fab;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .about-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .about-content {
   flex: 1;
   min-width: 300px;
-}
-
-.about-content p {
   font-family: 'Milker', sans-serif;
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
   color: #4d4d4d;
+  line-height: 1.7;
 }
 
 .video-box {
   flex: 1;
   max-width: 500px;
-  background-color: #fdf4c5;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  height: 300px;
+  /* set height so image knows its boundaries */
+  overflow: hidden;
+  background-color: #fbe7c6;
+  border-radius: 15px;
+  padding: 0;
+  /* remove padding so image can fill fully */
+  box-shadow: 0 12px 25px rgba(255, 143, 171, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
 }
 
-.video-box video {
-  border-radius: 8px;
+.video-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
 }
+
+
+
+
 
 /* Info Boxes */
 .info-box {
-  background-color: #fdf4c5;
-  border-radius: 10px;
-  padding: 1.5rem;
+  background-color: #fbe7c6;
+  border-radius: 1.5rem;
+  padding: 2rem;
   margin-top: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(255, 143, 171, 0.1);
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .info-box.show {
@@ -345,11 +381,20 @@ nav ul li a:hover::after {
   transform: translateX(0);
 }
 
+.info-box h3 {
+  font-family: 'Milker', sans-serif;
+  font-size: 1.8rem;
+  color: #ff8fab;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 #why-choose-us .choose-us-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
+  margin-top: 1rem;
 }
 
 #why-choose-us .gif-container {
@@ -357,33 +402,107 @@ nav ul li a:hover::after {
   max-width: 400px;
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+#why-choose-us .gif-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
 #why-choose-us .choose-us-text {
   flex: 1;
   min-width: 300px;
+  font-family: 'Milker', sans-serif;
+  color: #4d4d4d;
+  font-size: 1.05rem;
+  line-height: 1.6;
   text-align: left;
 }
+
+
+/* FLOAT-IN ANIMATION */
+@keyframes floatInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animations to elements */
+.about-section.show-left {
+  animation: floatInLeft 1s ease forwards;
+}
+
+.info-box.show {
+  animation: floatInUp 1s ease forwards;
+}
+
+
+/* GLOW EFFECT FOR HEADINGS ON HOVER */
+.about-title:hover,
+.info-box h3:hover {
+  text-shadow: 0 2px 6px rgba(255, 143, 171, 0.4);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Paragraph smooth fade on load */
+.about-content p,
+.choose-us-text p,
+#delivery-box p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* --------------------------------
    REVIEWS SECTION
 -------------------------------- */
 .reviews {
-  background-color: #fbe7c6;
   padding: 4rem 2rem;
   text-align: center;
-}
-
-.reviews h2 {
-  color: #ff8fab;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.review {
-  font-family: 'Milker', sans-serif;
-  font-style: italic;
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .reviews.hidden-right {
@@ -397,10 +516,78 @@ nav ul li a:hover::after {
   transform: translateX(0);
 }
 
+.review-card {
+  background-color: #fbe7c6;
+  padding: 3rem 2.5rem;
+  border-radius: 2rem;
+  box-shadow: 0 10px 25px rgba(255, 143, 171, 0.15);
+  max-width: 1000px;
+  /* wider max-width */
+  width: 95%;
+  /* more responsive, takes more screen space */
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(255, 143, 171, 0.25);
+}
+
+.review-card h3 {
+  font-family: 'Milker', sans-serif;
+  color: #ff8fab;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.stars {
+  font-size: 1.5rem;
+  color: #ffc107;
+  margin-bottom: 1rem;
+}
+
+.summary-text {
+  font-family: 'Milker', sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* SLIDER */
+.reviews-slider {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+}
+
+.review {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  font-family: 'Milker', sans-serif;
+  font-style: italic;
+  padding: 0 1.5rem;
+}
+
+.review.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
 /* --------------------------------
    CONTACT SECTION
 -------------------------------- */
 .contact {
+  background-color: #ffdde1;
   padding: 4rem 2rem;
   text-align: center;
 }
@@ -523,3 +710,80 @@ h3 {
 .order-now-btn {
   animation: floatEffect 3s infinite ease-in-out;
 }
+
+/* Modal Background */
+.modal {
+  display: none; /* Hidden by default */
+  position:sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  justify-content: center; /* Centers modal horizontally */
+  align-items: center; /* Centers modal vertically */
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out; /* Adds fade-in effect */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 70%; /* Set a fixed width for the modal */
+  max-width: 800px; /* Maximum width */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: scaleUp 0.4s ease-out; /* Animates modal scaling in */
+  position: relative; /* Keeps the close button in place */
+}
+
+/* Modal Close Button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #e74c3c; /* Change color on hover */
+}
+
+
+/* Centering Text inside Modal */
+.modal-content h2,
+.modal-content p {
+  text-align: center; /* Centers text horizontally */
+  margin: 10px 0;
+}
+
+/* Adding smooth transition on show/hide */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Smooth transition on modal opening */
+.modal.open {
+  display: flex; /* Makes the modal visible */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
